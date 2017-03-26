@@ -1,0 +1,74 @@
+{
+  "name": "webpack-cfg",
+  "author": "Adrian C. Miranda",
+  "description": "A distribution board for webpack",
+  "version": "1.1.16",
+  "main": "index.js",
+  "homepage": "https://github.com/adriancmiranda/webpack-cfg",
+  "readmeFilename": "README.md",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/adriancmiranda/webpack-cfg.git"
+  },
+  "bugs": {
+    "url": "https://github.com/adriancmiranda/webpack-cfg/issues"
+  },
+  "xo": {
+    "overrides": [
+      {
+        "files": "index.js",
+        "esnext": false
+      },
+      {
+        "files": "lib/**/*.js",
+        "esnext": false
+      }
+    ]
+  },
+  "config": {
+    "validate-commit-msg": {
+      "types": "conventional-commit-types"
+    }
+  },
+  "scripts": {
+    "upgrade": "ncu -a --loglevel verbose --packageFile package.json && npm i",
+    "dev": "run-p watch:*",
+    "test": "ava test/*.spec.js",
+    "lint": "xo index.js lib/**/*.js",
+    "travis:test": "npm test",
+    "appveyor:test": "node --max_old_space_size=4096 node_modules\\ava-cli\\cli test/*.spec.js",
+    "precommit": "npm test",
+    "commitmsg": "validate-commit-msg",
+    "release": "npm run build && standard-version"
+  },
+  "dependencies": {
+    "pirate-flag": "^0.0.1",
+    "dotcfg": "1.5.8",
+    "flatten": "^1.0.2",
+    "glob": "^7.1.1",
+    "is": "^3.2.1"
+  },
+  "devDependencies": {
+    "ava": "^0.18.2",
+    "ava-cli": "^0.0.1",
+    "ava-spec": "^1.1.0",
+    "conventional-commit-types": "^2.1.0",
+    "cross-env": "^3.2.4",
+    "husky": "^0.13.2",
+    "npm-check-updates": "^2.10.3",
+    "npm-run-all": "^4.0.2",
+    "nyc": "^10.1.2",
+    "standard-version": "^4.0.0",
+    "validate-commit-msg": "^2.11.2",
+    "xo": "^0.18.0",
+    "xo-loader": "^0.7.0"
+  },
+  "engines": {
+    "node": ">=4.3.0 <5.0.0 || >=5.10"
+  },
+  "keywords": [
+    "webpack",
+    "webpack-cfg"
+  ]
+}
