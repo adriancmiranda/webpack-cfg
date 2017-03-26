@@ -70,7 +70,7 @@ module.exports = public.setConfig((common, client, server) => {
   client.cfg('path.entry', './source/client.js');
 });
 
-public.on('compile', console.log);
+public.on('config', console.log);
 ```
 
 ### bin/configs/client-build.js
