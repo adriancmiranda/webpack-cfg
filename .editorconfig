@@ -19,5 +19,5 @@ trim_trailing_whitespace = false
 [*.diff]
 trim_trailing_whitespace = false
 
-[{index.js,lib/**.js}]
+[{index.js,lib/**.js,test/**.js}]
 indent_style = tab
