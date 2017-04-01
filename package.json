@@ -39,7 +39,7 @@
     "lint": "xo index.js lib/**/*.js",
     "travis:test": "npm test",
     "appveyor:test": "node --max_old_space_size=4096 node_modules\\ava-cli\\cli test/*.spec.js",
-    "precommit": "npm test",
+    "precommit": "run-s lint test",
     "commitmsg": "validate-commit-msg",
     "release": "npm run build && standard-version"
   },

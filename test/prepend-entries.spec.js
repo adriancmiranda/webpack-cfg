@@ -13,13 +13,13 @@ test('tools/prependEntries object', t => {
 			'./source/index.js',
 			'./source/index.html',
 			'./source/mobile.html',
-    ],
-		main:[
+		],
+		main: [
 			'./source/index.scss',
 			'./source/index.pug',
 			'./source/index.txt',
-    ],
-  };
+		],
+	};
 	const expectedStatsLength = 1 + testEntry.length;
 	const expectedIndexLength = inputEntry.index.length + testEntry.length;
 	const expectedMainLength = inputEntry.main.length + testEntry.length;
@@ -39,10 +39,14 @@ test('tools/prependEntries object', t => {
 });
 
 test('tools/prependEntries string', t => {
-	const entry = prependEntries(testEntry, 'foo.js');
+	let entry = prependEntries(testEntry, 'foo.js');
 	t.is(entry.length, 3);
 	t.is(entry[0], testEntry[0]);
 	t.is(entry[1], testEntry[1]);
+
+	entry = prependEntries('server/action.js', 'main.js');
+	t.is(entry.length, 2);
+	t.is(entry[0], 'server/action.js');
 });
 
 test('tools/prependEntries array', t => {
