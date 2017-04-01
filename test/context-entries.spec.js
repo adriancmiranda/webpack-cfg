@@ -23,3 +23,8 @@ test('tools/contextEntries string', t => {
 	t.falsy(inputEntry === entry);
 	t.truthy(entry.indexOf('../../../../') === 0);
 });
+
+test('tools/contextEntries unexpected', t => {
+	const entry = contextEntries('./context/string/test/2', undefined);
+	t.is(entry, undefined);
+});
