@@ -51,3 +51,10 @@ test('tools/prependEntries array', t => {
 	t.is(entry[0], testEntry[0]);
 	t.is(entry[1], testEntry[1]);
 });
+
+test('tools/prependEntries ignore unexpected values', t => {
+	const entry = prependEntries(testEntry, undefined);
+	t.is(entry.length, 3);
+	t.is(entry[0], testEntry[0]);
+	t.is(entry[1], testEntry[1]);
+});
