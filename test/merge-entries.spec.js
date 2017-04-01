@@ -17,9 +17,15 @@ test('tools/mergeEntries should work', t => {
     index: ['./source/index.html', './source/mobile.html'],
   };
   const entry = mergeEntries(pugEntry, txtEntry, jsonEntry, jsEntry, cssEntry, htmlEntry);
-  t.truthy(entry.index.length === 3, 'You got two "index" entries.');
-  t.truthy(entry.stats.length === jsonEntry.stats.length, 'You got one "stats" entry.');
-  t.truthy(entry.main.length === 3, 'You got three "main" entries.');
+  t.truthy(entry.index.length === 3, 'Got two "index" entries.');
+  t.truthy(entry.index.indexOf(jsEntry.index[0]) > -1, `entry.index: "${jsEntry.index[0]}" exists`);
+  t.truthy(entry.index.indexOf(htmlEntry.index[0]) > -1, `entry.index: "${htmlEntry.index[0]}" exists`);
+  t.truthy(entry.index.indexOf(htmlEntry.index[1]) > -1, `entry.index: "${htmlEntry.index[1]}" exists`);
+  t.truthy(entry.main.length === 3, 'Got three "main" entries.');
+  t.truthy(entry.main.indexOf(pugEntry) > -1, `entry.main: "${pugEntry}" exists`);
+  t.truthy(entry.main.indexOf(txtEntry[0]) > -1, `entry.main: "${txtEntry[0]}" exists`);
+  t.truthy(entry.main.indexOf(cssEntry.main) > -1, `entry.main: "${cssEntry.main}" exists`);
+  t.is(entry.stats, jsonEntry.stats, 'Got one "stats" entry.');
 });
 
 test('tools/mergeEntries should validate', t => {
