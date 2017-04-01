@@ -1,5 +1,4 @@
-[![npm][npm]][npm-url]
-[![experimental][stability]][stability-url]
+[![stability]][stability-url] [![xo]][xo-url] [![deps]][deps-url] [![depsci]][depsci-url] [![travis]][travis-url] [![appveyor]][appveyor-url]
 
 [xo]: https://img.shields.io/badge/code_style-XO-5ed9c7.svg
 [xo-url]: https://github.com/sindresorhus/xo
