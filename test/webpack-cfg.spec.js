@@ -29,14 +29,16 @@ test('tools/webpackCfg config function', t => {
 });
 
 test('tools/webpackCfg config', t => {
-	const argv = { dev: true, run: ['client-watch'] };
+	const argv = { dev: true, run: ['client-build'] };
 	const config = component.setConfig(argv, (common, client, server) => {
 		t.truthy(common.cfg && common.exe, 'common is a dotcfg');
 		t.truthy(client.cfg && client.exe, 'client is a dotcfg');
 		t.truthy(server.cfg && server.exe, 'server is a dotcfg');
+		client.cfg('path.scripts', 'source/scripts');
+		t.truthy(client.cfg('path.scripts'), 'source/scripts');
 	});
 	t.is(toString.call(config), '[object Object]', 'Getting a single task');
-	t.is(config.name, 'client:watch', 'Got the correct task');
+	t.is(config.name, 'client:build', 'Got the correct task');
 });
 
 test('tools/webpackCfg multi config', t => {
