@@ -37,6 +37,8 @@ test('tools/webpackCfg config', t => {
 		t.truthy(server.cfg && server.exe, 'server is a dotcfg');
 		common.cfg('cwd', process.cwd());
 		t.is(toString.call(common.cfg('cwd')), '[object Function]');
+		common.cfg('context', process.cwd());
+		t.is(toString.call(common.cfg('context')), '[object Function]');
 		// common.cfg('path.public', 'public');
 		// t.is(toString.call(common.cfg('path.public')), '[object Function]');
 		common.cfg('path.output', 'dist');
@@ -51,7 +53,7 @@ test('tools/webpackCfg config', t => {
 	console.log('webpack-cfg.spec.config:\n', config);
 	t.is(config.devtool, false, 'Got the correct devtool');
 	t.is(config.target, 'web', 'Got the correct target');
-	t.is(config.context, undefined, 'Got the correct context');
+	t.is(config.context, process.cwd(), 'Got the correct context');
 	t.is(config.output.path, path.join(process.cwd(), 'dist'), 'Got the correct output.path');
 	// t.is(config.output.publicPath, 'dist', 'Got the correct output.publicPath');
 	// t.is(config.output.filename, 'source/scripts/[name].[chunkhash].js', 'Got the correct output.filename');
