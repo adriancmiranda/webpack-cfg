@@ -50,12 +50,12 @@ test('tools/webpackCfg config', t => {
 	});
 	t.is(toString.call(config), '[object Object]', 'Getting a single task');
 	t.is(config.name, 'client:build', 'Got the correct task');
-	console.log('webpack-cfg.spec.config:\n', config);
+	console.log('webpack-cfg.spec.config.output:\n', config.output);
 	t.is(config.devtool, false, 'Got the correct devtool');
 	t.is(config.target, 'web', 'Got the correct target');
 	t.is(config.context, process.cwd(), 'Got the correct context');
 	t.is(config.output.path, path.join(process.cwd(), 'dist'), 'Got the correct output.path');
-	// t.is(config.output.publicPath, 'dist', 'Got the correct output.publicPath');
+	t.is(config.output.publicPath, 'dist', 'Got the correct output.publicPath');
 	// t.is(config.output.filename, 'source/scripts/[name].[chunkhash].js', 'Got the correct output.filename');
 	t.is(config.output.chunkFilename, 'source/scripts/[id].[chunkhash].js', 'Got the correct output.chunkFilename');
 	t.deepEqual(config.resolve.alias, undefined, 'Got the correct resolve.alias');
@@ -75,6 +75,6 @@ test('tools/webpackCfg multi config', t => {
 		t.truthy(server.cfg && server.exe, 'server is a dotcfg');
 	});
 	t.truthy(Array.isArray(config), 'Got multi tasks');
-	t.truthy(config[0].name, 'client:watch', 'Got the correct task on correct order');
-	t.truthy(config[1].name, 'server:watch', 'Got the correct task on correct order');
+	t.is(config[0].name, 'client:watch', 'Got the correct task on correct order');
+	t.is(config[1].name, 'server:watch', 'Got the correct task on correct order');
 });
