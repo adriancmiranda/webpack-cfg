@@ -36,7 +36,7 @@
     "dev": "run-p watch:*",
     "test": "ava test/*.spec.js",
     "watch:test": "npm test -- --watch",
-    "lint": "xo index.js lib/**/*.js",
+    "lint": "xo index.js tools.js templates.js lib/**/*.js",
     "travis:test": "npm test",
     "appveyor:test": "node --max_old_space_size=4096 node_modules\\ava-cli\\cli test/*.spec.js",
     "precommit": "run-s lint test",
