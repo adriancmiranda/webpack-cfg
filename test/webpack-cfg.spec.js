@@ -1,3 +1,4 @@
+import path from 'path';
 import test from 'ava-spec';
 import webpackCfg from '../';
 
@@ -34,8 +35,12 @@ test('tools/webpackCfg config', t => {
 		t.truthy(common.cfg && common.exe, 'common is a dotcfg');
 		t.truthy(client.cfg && client.exe, 'client is a dotcfg');
 		t.truthy(server.cfg && server.exe, 'server is a dotcfg');
-		common.cfg('path.public', 'public');
-		t.is(toString.call(common.cfg('path.public')), '[object Function]');
+		common.cfg('cwd', process.cwd());
+		t.is(toString.call(common.cfg('cwd')), '[object Function]');
+		// common.cfg('path.public', 'public');
+		// t.is(toString.call(common.cfg('path.public')), '[object Function]');
+		common.cfg('path.output', 'dist');
+		t.is(toString.call(common.cfg('path.output')), '[object Function]');
 		common.cfg('build.publicPath', 'dist');
 		t.truthy(common.cfg('build.publicPath'), 'dist');
 		client.cfg('path.scripts', 'source/scripts');
@@ -43,11 +48,11 @@ test('tools/webpackCfg config', t => {
 	});
 	t.is(toString.call(config), '[object Object]', 'Getting a single task');
 	t.is(config.name, 'client:build', 'Got the correct task');
-	// console.log('webpack-cfg.spec.config:\n', config);
-	// t.is(config.devtool, false, 'Got the correct devtool');
-	// t.is(config.target, 'web', 'Got the correct target');
-	// t.is(config.context, undefined, 'Got the correct context');
-	// t.is(config.output.path, undefined, 'Got the correct output.path');
+	console.log('webpack-cfg.spec.config:\n', config);
+	t.is(config.devtool, false, 'Got the correct devtool');
+	t.is(config.target, 'web', 'Got the correct target');
+	t.is(config.context, undefined, 'Got the correct context');
+	t.is(config.output.path, path.join(process.cwd(), 'dist'), 'Got the correct output.path');
 	// t.is(config.output.publicPath, 'dist', 'Got the correct output.publicPath');
 	// t.is(config.output.filename, 'source/scripts/[name].[chunkhash].js', 'Got the correct output.filename');
 	// t.is(config.output.chunkFilename, 'source/scripts/[id].[chunkhash].js', 'Got the correct output.chunkFilename');
