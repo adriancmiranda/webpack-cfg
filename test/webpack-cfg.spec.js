@@ -34,12 +34,30 @@ test('tools/webpackCfg config', t => {
 		t.truthy(common.cfg && common.exe, 'common is a dotcfg');
 		t.truthy(client.cfg && client.exe, 'client is a dotcfg');
 		t.truthy(server.cfg && server.exe, 'server is a dotcfg');
+		common.cfg('path.public', 'public');
+		t.is(toString.call(common.cfg('path.public')), '[object Function]');
+		common.cfg('build.publicPath', 'dist');
+		t.truthy(common.cfg('build.publicPath'), 'dist');
 		client.cfg('path.scripts', 'source/scripts');
 		t.truthy(client.cfg('path.scripts'), 'source/scripts');
 	});
 	t.is(toString.call(config), '[object Object]', 'Getting a single task');
 	t.is(config.name, 'client:build', 'Got the correct task');
-	// t.is(config.output.filename, 'source/scripts/[name].[chunkhash].js', 'Got the correct filename');
+	// console.log('webpack-cfg.spec.config:\n', config);
+	// t.is(config.devtool, false, 'Got the correct devtool');
+	// t.is(config.target, 'web', 'Got the correct target');
+	// t.is(config.context, undefined, 'Got the correct context');
+	// t.is(config.output.path, undefined, 'Got the correct output.path');
+	// t.is(config.output.publicPath, 'dist', 'Got the correct output.publicPath');
+	// t.is(config.output.filename, 'source/scripts/[name].[chunkhash].js', 'Got the correct output.filename');
+	// t.is(config.output.chunkFilename, 'source/scripts/[id].[chunkhash].js', 'Got the correct output.chunkFilename');
+	// t.is(config.resolve.alias, undefined, 'Got the correct resolve.alias');
+	// t.is(config.resolve.aliasFields, ['browser'], 'Got the correct resolve.aliasFields');
+	// t.is(config.resolve.mainFields, ['browser', 'module', 'main'], 'Got the correct resolve.mainFields');
+	// t.is(config.resolve.mainFiles, ['index'], 'Got the correct resolve.mainFiles');
+	// t.is(config.resolve.descriptionFiles, ['bower.json', 'package.json'], 'Got the correct resolve.descriptionFiles');
+	// t.is(config.resolve.modules, [undefined, undefined, 'node_modules'], 'Got the correct resolve.modules');
+	// t.is(config.resolve.extensions, ['.scss', '.pug', '.js', '.json'], 'Got the correct resolve.extensions');
 });
 
 test('tools/webpackCfg multi config', t => {
