@@ -39,6 +39,7 @@ test('tools/webpackCfg config', t => {
 	});
 	t.is(toString.call(config), '[object Object]', 'Getting a single task');
 	t.is(config.name, 'client:build', 'Got the correct task');
+	// t.is(config.output.filename, 'source/scripts/[name].[chunkhash].js', 'Got the correct filename');
 });
 
 test('tools/webpackCfg multi config', t => {
