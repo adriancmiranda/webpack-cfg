@@ -39,8 +39,8 @@ test('tools/webpackCfg config', t => {
 		t.is(toString.call(common.cfg('cwd')), '[object Function]');
 		common.cfg('context', process.cwd());
 		t.is(toString.call(common.cfg('context')), '[object Function]');
-		// common.cfg('path.public', 'public');
-		// t.is(toString.call(common.cfg('path.public')), '[object Function]');
+		common.cfg('path.public', 'public');
+		t.is(toString.call(common.cfg('path.public')), '[object Function]');
 		common.cfg('path.output', 'dist');
 		t.is(toString.call(common.cfg('path.output')), '[object Function]');
 		common.cfg('build.publicPath', 'dist');
@@ -50,21 +50,20 @@ test('tools/webpackCfg config', t => {
 	});
 	t.is(toString.call(config), '[object Object]', 'Getting a single task');
 	t.is(config.name, 'client:build', 'Got the correct task');
-	console.log('webpack-cfg.spec.config.output:\n', config.output);
 	t.is(config.devtool, false, 'Got the correct devtool');
 	t.is(config.target, 'web', 'Got the correct target');
 	t.is(config.context, process.cwd(), 'Got the correct context');
 	t.is(config.output.path, path.join(process.cwd(), 'dist'), 'Got the correct output.path');
 	t.is(config.output.publicPath, 'dist', 'Got the correct output.publicPath');
-	// t.is(config.output.filename, 'source/scripts/[name].[chunkhash].js', 'Got the correct output.filename');
+	t.is(config.output.filename, 'source/scripts/[name].[chunkhash].js', 'Got the correct output.filename');
 	t.is(config.output.chunkFilename, 'source/scripts/[id].[chunkhash].js', 'Got the correct output.chunkFilename');
 	t.deepEqual(config.resolve.alias, undefined, 'Got the correct resolve.alias');
 	t.deepEqual(config.resolve.aliasFields, ['browser'], 'Got the correct resolve.aliasFields');
 	t.deepEqual(config.resolve.mainFields, ['browser', 'module', 'main'], 'Got the correct resolve.mainFields');
 	t.deepEqual(config.resolve.mainFiles, ['index'], 'Got the correct resolve.mainFiles');
-	t.deepEqual(config.resolve.descriptionFiles, ['bower.json', 'package.json'], 'Got the correct resolve.descriptionFiles');
-	t.deepEqual(config.resolve.modules, [undefined, undefined, 'node_modules'], 'Got the correct resolve.modules');
-	t.deepEqual(config.resolve.extensions, ['.scss', '.pug', '.js', '.json'], 'Got the correct resolve.extensions');
+	t.deepEqual(config.resolve.descriptionFiles, ['package.json', 'bower.json'], 'Got the correct resolve.descriptionFiles');
+	t.deepEqual(config.resolve.modules, [undefined, 'node_modules', undefined], 'Got the correct resolve.modules');
+	t.deepEqual(config.resolve.extensions, ['.js', '.json', '.scss', '.pug'], 'Got the correct resolve.extensions');
 });
 
 test('tools/webpackCfg multi config', t => {
