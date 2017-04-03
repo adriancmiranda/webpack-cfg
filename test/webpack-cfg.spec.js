@@ -35,6 +35,7 @@ test('tools/webpackCfg config', t => {
 		t.truthy(common.cfg && common.exe, 'common is a dotcfg');
 		t.truthy(client.cfg && client.exe, 'client is a dotcfg');
 		t.truthy(server.cfg && server.exe, 'server is a dotcfg');
+		common.cfg('lifecycle', process.env.npm_lifecycle_event);
 		common.cfg('cwd', process.cwd());
 		t.is(toString.call(common.cfg('cwd')), '[object Function]');
 		common.cfg('context', process.cwd());
@@ -43,6 +44,10 @@ test('tools/webpackCfg config', t => {
 		t.is(toString.call(common.cfg('path.public')), '[object Function]');
 		common.cfg('path.output', 'dist');
 		t.is(toString.call(common.cfg('path.output')), '[object Function]');
+		common.cfg('path.assets', 'assets');
+		t.is(toString.call(common.cfg('path.assets')), '[object Function]');
+		common.cfg('path.scripts', common.res('path.assets', 'core'));
+		t.is(toString.call(common.cfg('path.scripts')), '[object Function]');
 		common.cfg('build.publicPath', 'dist');
 		t.truthy(common.cfg('build.publicPath'), 'dist');
 		client.cfg('path.scripts', 'source/scripts');
