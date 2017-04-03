@@ -23,7 +23,7 @@ test('tools/prependEntries object', t => {
 	const expectedStatsLength = 1 + testEntry.length;
 	const expectedIndexLength = inputEntry.index.length + testEntry.length;
 	const expectedMainLength = inputEntry.main.length + testEntry.length;
-	const entry = prependEntries(testEntry, inputEntry);
+	let entry = prependEntries(testEntry, inputEntry);
 	t.is(entry.stats.length, expectedStatsLength);
 	t.is(entry.stats[0], testEntry[0]);
 	t.is(entry.stats[1], testEntry[1]);
@@ -36,6 +36,13 @@ test('tools/prependEntries object', t => {
 	t.is(entry.main[0], testEntry[0]);
 	t.is(entry.main[1], testEntry[1]);
 	t.is(entry.main[2], './source/index.scss');
+	inputEntry.index.splice(0, 2);
+	delete inputEntry.stats;
+	delete inputEntry.main;
+	entry = prependEntries(testEntry, inputEntry);
+	t.is(entry.index.length, expectedIndexLength);
+	t.is(entry.index[0], testEntry[0]);
+	t.is(entry.index[1], testEntry[1]);
 });
 
 test('tools/prependEntries string', t => {
