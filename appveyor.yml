@@ -23,8 +23,6 @@ install:
   - npm install ava-cli -g
   - npm install yarn -g
   - yarn install
-  - yarn link
-  - yarn link webpack-cfg
 
 build: off
 
