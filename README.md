@@ -58,15 +58,13 @@ const public = webpackCfg({
 });
 
 module.exports = public.setConfig((common, client, server) => {
-  common.cfg('cwd', process.cwd());
-  common.cfg('context', process.cwd());
-  common.cfg('path.public', '/')
-  common.cfg('path.output', './dist');
-
-  server.cfg('path.entry', './server/index.js');
-
-  client.cfg('path.output', './dist/static');
-  client.cfg('path.entry', './source/client.js');
+  common.set('cwd', process.cwd());
+  common.set('context', process.cwd());
+  common.set('path.public', '/')
+  common.set('path.output', './dist');
+  server.set('path.entry', './server/index.js');
+  client.set('path.output', './dist/static');
+  client.set('path.entry', './source/client.js');
 });
 
 public.on('config', console.log);
