@@ -1,5 +1,4 @@
 import test from 'ava-spec';
-import { sep } from 'path';
 import { contextEntries } from '../tools';
 
 test('tools/contextEntries object', t => {
@@ -20,7 +19,7 @@ test('tools/contextEntries array', t => {
 
 test('tools/contextEntries string', t => {
 	const inputEntry = 'foo.js';
-	const entry = contextEntries('./context/string/test/2', inputEntry);
+	const entry = contextEntries('context/string/test/2', inputEntry);
 	t.falsy(inputEntry === entry);
 	t.is(entry, './context/string/test/2/foo.js');
 });
