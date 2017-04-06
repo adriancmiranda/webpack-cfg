@@ -1,10 +1,14 @@
-const {mergeEntries, prependEntries} = require('../../tools');
+const {contextEntries, mergeEntries, prependEntries} = require('../../tools');
 const commonConfig = require('./common-config');
 
-module.exports = get => commonConfig(get).cfg('entry', mergeEntries(
+module.exports = get => commonConfig(get)
+
+.cfg('entry', contextEntries(get('path.public'), mergeEntries(
 	get('scripts.entry'),
 	get('styles.entry')
-), val => val).cfg('resolve.mainFields', 'browser', prependEntries).cfg({
+)), val => val)
+
+.cfg('resolve.mainFields', 'browser', prependEntries).cfg({
 	name: 'client:config',
 	target: 'web',
 	resolve: {
