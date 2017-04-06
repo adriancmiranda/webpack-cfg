@@ -51,7 +51,7 @@
     "is": "^3.2.1"
   },
   "devDependencies": {
-    "ava": "^0.18.2",
+    "ava": "^0.19.0",
     "ava-cli": "^0.0.1",
     "ava-spec": "^1.1.0",
     "conventional-commit-types": "^2.1.0",
