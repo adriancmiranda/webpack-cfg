@@ -4,8 +4,8 @@ const commonConfig = require('./common-config');
 module.exports = get => commonConfig(get)
 
 .cfg('entry', contextEntries(get('path.public'), mergeEntries(
-	get('scripts.entry'),
-	get('styles.entry')
+	get('script.entry'),
+	get('style.entry')
 )), val => val)
 
 .cfg('resolve.mainFields', 'browser', prependEntries).cfg({

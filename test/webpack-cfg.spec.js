@@ -52,8 +52,13 @@ test('tools/webpackCfg config', t => {
 		t.truthy(common.cfg('build.publicPath'), 'dist');
 		client.cfg('path.scripts', 'source/scripts');
 		t.truthy(client.cfg('path.scripts'), 'source/scripts');
+		client.cfg('script.entry.index', 'client.js');
+		client.cfg('style.entry.index', 'theme.css');
 	});
 	t.is(toString.call(config), '[object Object]', 'Getting a single task');
+	t.is(config.entry.index.length, 2);
+	t.is(config.entry.index[0], './public/client.js');
+	t.is(config.entry.index[1], './public/theme.css');
 	t.is(config.name, 'client:build', 'Got the correct task');
 	t.is(config.devtool, false, 'Got the correct devtool');
 	t.is(config.target, 'web', 'Got the correct target');

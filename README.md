@@ -52,12 +52,12 @@ npm i -D webpack-cfg
 ```javascript
 const webpackCfg = require('webpack-cfg');
 
-const public = webpackCfg({
+const pipeline = webpackCfg({
   client: './configs/**/client-*.js',
   server: './configs/**/server-*.js',
 });
 
-module.exports = public.setConfig((common, client, server) => {
+module.exports = pipeline.setConfig((common, client, server) => {
   common.set('cwd', process.cwd());
   common.set('context', process.cwd());
   common.set('path.public', '/')
