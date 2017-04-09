@@ -2,22 +2,64 @@ import path from 'path';
 import test from 'ava-spec';
 import webpackCfg from '../';
 
-const tasks = {
-	client: './configs/client-*.js',
-	server: './configs/server-*.js'
+const stringSingleTask = './configs/server-test.js';
+const clientTasks = './configs/client-*.js';
+const serverTasks = './configs/server-*.js';
+const objectTasks = {
+	client: clientTasks,
+	server: serverTasks
 };
-const component = webpackCfg(tasks);
+
+test('tools/webpackCfg pattern of non-existent files', t => {
+	const pattern = './inexistent/file.js';
+	const err = t.throws(() => {
+		webpackCfg({ foo: pattern });
+	}, Error);
+	t.is(err.message, `Nothing was found on "${pattern}" pattern.`);
+});
+
+test('tools/webpackCfg non-existent "run" property', t => {
+	const component = webpackCfg(clientTasks);
+	let config;
+	const err = t.throws(() => {
+		config = component.setConfig({ run: undefined }, () => {});
+	}, TypeError);
+	t.is(config, undefined, 'Has no config on demand.');
+	t.is(err.message, [
+		'Could not configure your webpack with this settings.',
+		'Please, define the "run" property with any task filename previously registered to get a setting.',
+	].join(' '));
+});
+
+test.todo('Make a glob alias to call tasks');
+test('tools/webpackCfg count injections', t => {
+	const config = webpackCfg(objectTasks, () => {});
+	t.is(config({
+		run: [
+			// 3 for client
+			'client-test',
+			'client-watch',
+			'client-build',
+			// 3 for server
+			'server-test',
+			'server-watch',
+			'server-build',
+		].join(',')
+	}).length, (Object.keys(objectTasks).length * 3));
+});
 
 test('tools/webpackCfg', t => {
-	t.is(toString.call(component.registerTasks), '[object Function]', 'registerTasks method exists');
+	const component = webpackCfg(stringSingleTask);
 	t.is(toString.call(component.setConfig), '[object Function]', 'setConfig method exists');
 	t.is(toString.call(component.common), '[object Object]', 'common property exists');
 	t.truthy(component.common.cfg && component.common.exe, 'common is a dotcfg');
-	const config = component.setConfig({}, () => {});
-	t.is(config.length, Object.keys(tasks).length * 3, 'Got all tasks');
+	const config = component.setConfig({ run: 'server-test' }, () => {});
+	t.falsy(Array.isArray(config), 'Got a single task.');
+	t.is(config.name, 'server:test', 'Got the correct task');
 });
 
 test('tools/webpackCfg config function', t => {
+	const component = webpackCfg(objectTasks);
 	const config = component.setConfig((common, client, server) => {
 		t.truthy(common.cfg && common.exe, 'common is a dotcfg');
 		t.truthy(client.cfg && client.exe, 'client is a dotcfg');
@@ -30,6 +72,7 @@ test('tools/webpackCfg config function', t => {
 });
 
 test('tools/webpackCfg config', t => {
+	const component = webpackCfg(objectTasks);
 	const argv = { dev: true, run: ['client-build'] };
 	const config = component.setConfig(argv, (common, client, server) => {
 		t.truthy(common.cfg && common.exe, 'common is a dotcfg');
@@ -77,6 +120,7 @@ test('tools/webpackCfg config', t => {
 });
 
 test('tools/webpackCfg multi config', t => {
+	const component = webpackCfg(objectTasks);
 	const argv = { dev: true, run: ['client-watch', 'server-watch'] };
 	const config = component.setConfig(argv, (common, client, server) => {
 		t.truthy(common.cfg && common.exe, 'common is a dotcfg');
