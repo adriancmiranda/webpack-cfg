@@ -6,7 +6,13 @@
 
 > A distribution board for webpack
 
-[![stability]][stability-url] [![xo]][xo-url] [![deps]][deps-url] [![depsci]][depsci-url] [![travis]][travis-url] [![appveyor]][appveyor-url]
+[![npm][npm]][npm-url]
+[![stability][stability]][stability-url]
+[![xo][xo]][xo-url]
+[![deps][deps]][deps-url]
+[![depsci][depsci]][depsci-url]
+[![travis][travis]][travis-url]
+[![appveyor][appveyor]][appveyor-url]
 
 ## Install
 
@@ -88,6 +94,9 @@ module.exports = get => ({
 
 
 <!-- links -->
+
+[npm]: https://img.shields.io/npm/v/webpack-cfg.svg
+[npm-url]: https://npmjs.com/package/webpack-cfg
 
 [xo]: https://img.shields.io/badge/code_style-XO-5ed9c7.svg
 [xo-url]: https://github.com/sindresorhus/xo
