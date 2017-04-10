@@ -33,15 +33,15 @@
   <p>A distribution board for webpack</p>
 </blockquote>
 
-## Install
+<h2 align="center">Install</h2>
 
 ```bash
 npm i -D webpack-cfg
 ```
 
-## Usage
+<h2 align="center">Usage</h2>
 
-### package.json
+<h3 align="center">package.json</h3>
 
 ```json
 {
@@ -51,7 +51,7 @@ npm i -D webpack-cfg
 }
 ```
 
-### bin/index.js
+<h3 align="center">bin/index.js</h3>
 
 ```javascript
 const webpackCfg = require('webpack-cfg');
@@ -74,7 +74,7 @@ module.exports = pipeline.setConfig((common, client, server) => {
 public.on('config', console.log);
 ```
 
-### bin/configs/client-build.js
+<h3 align="center">bin/configs/client-build.js</h3>
 
 ```javascript
 const { baseTemplate } = require('webpack-cfg/templates');
@@ -92,7 +92,7 @@ module.exports = get => baseTemplate(get).cfg({
 });
 ```
 
-### bin/configs/server-build.js
+<h3 align="center">bin/configs/server-build.js</h3>
 
 ```javascript
 module.exports = get => ({
@@ -107,6 +107,6 @@ module.exports = get => ({
 });
 ```
 
-## License
+<h2 align="center">License</h2>
 
 MIT
