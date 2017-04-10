@@ -29,7 +29,9 @@
 
 <h1 align="center">webpack-cfg</h1>
 
-> <span align="center">A distribution board for webpack</span>
+<blockquote align="center">
+  <p>A distribution board for webpack</p>
+</blockquote>
 
 ## Install
 
