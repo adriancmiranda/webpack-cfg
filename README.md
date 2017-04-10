@@ -52,7 +52,7 @@ module.exports = pipeline.setConfig((common, client, server) => {
   client.set('path.entry', './source/client.js');
 });
 
-public.on('config', console.log);
+pipeline.on('config', console.log);
 ```
 
 ### bin/configs/client-build.js
