@@ -10,7 +10,9 @@
   <p>A distribution board for webpack</p>
 </blockquote>
 
+<div align="center">
 [![stability]][stability-url] [![xo]][xo-url] [![deps]][deps-url] [![depsci]][depsci-url] [![travis]][travis-url] [![appveyor]][appveyor-url]
+</div>
 
 <h2 align="center">Install</h2>
 
