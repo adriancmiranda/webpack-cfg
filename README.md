@@ -84,7 +84,7 @@ module.exports = get => ({
 
 ## License
 
-MIT
+[MIT][license-url]
 
 
 <!-- links -->
@@ -109,3 +109,5 @@ MIT
 
 [stability]: http://badges.github.io/stability-badges/dist/experimental.svg
 [stability-url]: https://cdn.meme.am/cache/instances/folder481/500x/9689481.jpg
+
+[license-url]: https://github.com/adriancmiranda/webpack-cfg/blob/master/LICENSE
