@@ -27,9 +27,9 @@
   </a>
 </div>
 
-# webpack-cfg
+<h1 align="center">webpack-cfg</h1>
 
-> A distribution board for webpack
+> <span align="center">A distribution board for webpack</span>
 
 ## Install
 
