@@ -6,9 +6,9 @@
 
 > A distribution board for webpack
 
-[![npm][npm]][npm-url]
 [![stability][stability]][stability-url]
 [![xo][xo]][xo-url]
+[![npm][npm]][npm-url]
 [![deps][deps]][deps-url]
 [![depsci][depsci]][depsci-url]
 [![travis][travis]][travis-url]
