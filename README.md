@@ -109,4 +109,4 @@ module.exports = get => ({
 
 <h2 align="center">License</h2>
 
-MIT
+<p align="center">MIT</p>
