@@ -21,9 +21,11 @@
 [stability]: http://badges.github.io/stability-badges/dist/experimental.svg
 [stability-url]: https://cdn.meme.am/cache/instances/folder481/500x/9689481.jpg
 
-<a href="https://github.com/webpack/webpack">
-  <img width="200" height="200" src="https://webpack.js.org/assets/icon-square-big.svg">
-</a>
+<div align="center">
+  <a href="https://github.com/webpack/webpack">
+    <img width="200" height="200" src="https://webpack.js.org/assets/icon-square-big.svg">
+  </a>
+</div>
 
 # webpack-cfg
 
