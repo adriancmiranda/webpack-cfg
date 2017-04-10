@@ -1,26 +1,3 @@
-[![stability]][stability-url] [![xo]][xo-url] [![deps]][deps-url] [![depsci]][depsci-url] [![travis]][travis-url] [![appveyor]][appveyor-url]
-
-[xo]: https://img.shields.io/badge/code_style-XO-5ed9c7.svg
-[xo-url]: https://github.com/sindresorhus/xo
-
-[npm]: https://img.shields.io/npm/v/webpack-cfg.svg
-[npm-url]: https://npmjs.com/package/webpack-cfg
-
-[travis]: https://travis-ci.org/adriancmiranda/webpack-cfg.svg?branch=master
-[travis-url]: https://travis-ci.org/adriancmiranda/webpack-cfg
-
-[appveyor]: https://ci.appveyor.com/api/projects/status/hucvow1n0t3q3le3/branch/master?svg=true
-[appveyor-url]: https://ci.appveyor.com/project/adriancmiranda/webpack-cfg/branch/master
-
-[deps]: https://david-dm.org/adriancmiranda/webpack-cfg.svg
-[deps-url]: https://david-dm.org/adriancmiranda/webpack-cfg
-
-[depsci]: https://dependencyci.com/github/adriancmiranda/webpack-cfg/badge
-[depsci-url]: https://dependencyci.com/github/adriancmiranda/webpack-cfg
-
-[stability]: http://badges.github.io/stability-badges/dist/experimental.svg
-[stability-url]: https://cdn.meme.am/cache/instances/folder481/500x/9689481.jpg
-
 <a href="https://github.com/webpack/webpack">
   <img width="200" height="200" src="https://webpack.js.org/assets/icon-square-big.svg">
 </a>
@@ -28,6 +5,8 @@
 # webpack-cfg
 
 > A distribution board for webpack
+
+[![stability]][stability-url] [![xo]][xo-url] [![deps]][deps-url] [![depsci]][depsci-url] [![travis]][travis-url] [![appveyor]][appveyor-url]
 
 ## Install
 
@@ -106,3 +85,27 @@ module.exports = get => ({
 ## License
 
 MIT
+
+
+<!-- links -->
+
+[xo]: https://img.shields.io/badge/code_style-XO-5ed9c7.svg
+[xo-url]: https://github.com/sindresorhus/xo
+
+[npm]: https://img.shields.io/npm/v/webpack-cfg.svg
+[npm-url]: https://npmjs.com/package/webpack-cfg
+
+[travis]: https://travis-ci.org/adriancmiranda/webpack-cfg.svg?branch=master
+[travis-url]: https://travis-ci.org/adriancmiranda/webpack-cfg
+
+[appveyor]: https://ci.appveyor.com/api/projects/status/hucvow1n0t3q3le3/branch/master?svg=true
+[appveyor-url]: https://ci.appveyor.com/project/adriancmiranda/webpack-cfg/branch/master
+
+[deps]: https://david-dm.org/adriancmiranda/webpack-cfg.svg
+[deps-url]: https://david-dm.org/adriancmiranda/webpack-cfg
+
+[depsci]: https://dependencyci.com/github/adriancmiranda/webpack-cfg/badge
+[depsci-url]: https://dependencyci.com/github/adriancmiranda/webpack-cfg
+
+[stability]: http://badges.github.io/stability-badges/dist/experimental.svg
+[stability-url]: https://cdn.meme.am/cache/instances/folder481/500x/9689481.jpg
