@@ -4,25 +4,23 @@
   </a>
 </div>
 
-<h1 align="center">webpack-cfg</h1>
+<h1 align="center">~ webpack-cfg ~</h1>
 
 <blockquote align="center">
   <p>A distribution board for webpack</p>
 </blockquote>
 
-<div align="center">
 [![stability]][stability-url] [![xo]][xo-url] [![deps]][deps-url] [![depsci]][depsci-url] [![travis]][travis-url] [![appveyor]][appveyor-url]
-</div>
 
-<h2 align="center">Install</h2>
+<h2 align="center">~ Install ~</h2>
 
 ```bash
 npm i -D webpack-cfg
 ```
 
-<h2 align="center">Usage</h2>
+<h2 align="center">~ Usage ~</h2>
 
-<h3 align="center">package.json</h3>
+<h3 align="center">~ package.json ~</h3>
 
 ```json
 {
@@ -32,7 +30,7 @@ npm i -D webpack-cfg
 }
 ```
 
-<h3 align="center">bin/index.js</h3>
+<h3 align="center">~ bin/index.js ~</h3>
 
 ```javascript
 const webpackCfg = require('webpack-cfg');
@@ -55,7 +53,7 @@ module.exports = pipeline.setConfig((common, client, server) => {
 public.on('config', console.log);
 ```
 
-<h3 align="center">bin/configs/client-build.js</h3>
+<h3 align="center">~ bin/configs/client-build.js ~</h3>
 
 ```javascript
 const { baseTemplate } = require('webpack-cfg/templates');
@@ -73,7 +71,7 @@ module.exports = get => baseTemplate(get).cfg({
 });
 ```
 
-<h3 align="center">bin/configs/server-build.js</h3>
+<h3 align="center">~ bin/configs/server-build.js ~</h3>
 
 ```javascript
 module.exports = get => ({
@@ -88,7 +86,7 @@ module.exports = get => ({
 });
 ```
 
-<h2 align="center">License</h2>
+<h2 align="center">~ License ~</h2>
 
 <p align="center">MIT</p>
 
