@@ -6,8 +6,6 @@
 
 > A distribution board for webpack
 
-[![stability][stability]][stability-url]
-[![xo][xo]][xo-url]
 [![npm][npm]][npm-url]
 [![deps][deps]][deps-url]
 [![depsci][depsci]][depsci-url]
@@ -95,7 +93,7 @@ module.exports = get => ({
 
 <!-- links -->
 
-[npm]: https://img.shields.io/npm/v/webpack-cfg.svg
+[npm]: https://badge.fury.io/js/webpack-cfg.svg
 [npm-url]: https://npmjs.com/package/webpack-cfg
 
 [xo]: https://img.shields.io/badge/code_style-XO-5ed9c7.svg
