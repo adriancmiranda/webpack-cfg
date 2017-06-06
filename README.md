@@ -86,6 +86,18 @@ module.exports = get => ({
 });
 ```
 
+## templates/base-strategy
+## templates/base-template
+## templates/style-loaders
+
+## util/abs-alias
+## util/alias
+## util/append-entries
+## util/context
+## util/merge-entries
+## util/parse-argv
+## util/prepend-entries
+
 ## License
 
 [MIT][license-url]
