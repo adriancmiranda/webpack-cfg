@@ -41,7 +41,7 @@
     "appveyor:test": "node --max_old_space_size=4096 node_modules\\ava-cli\\cli test/*.spec.js",
     "precommit": "run-s lint test",
     "commitmsg": "validate-commit-msg",
-    "release": "npm run build && standard-version"
+    "release": "npm run lint && standard-version"
   },
   "dependencies": {
     "pirate-flag": "^0.0.1",
