@@ -86,6 +86,100 @@ module.exports = get => ({
 });
 ```
 
+
+<details><summary>templates/base-template</summary><p>
+    
+  ## Sample
+
+  ```javascript
+  const { baseTemplate } = require('webpack-cfg/templates');
+  const eslintFriendlyFormatter = require('eslint-friendly-formatter');
+
+  module.exports = $ => baseTemplate($).cfg({
+    name: 'common:template',
+    context: $('context'),
+    entry: $('script.entry'),
+    output: {
+      path: $('cwd', $('path.output.bundle')),
+    },
+    resolve: {
+      alias: $('alias'),
+      modules: [$('cwd', 'node_modules')],
+    },
+    module: {
+      rules: [{
+        enforce: 'pre',
+        loader: 'eslint-loader',
+        test: /\.js$/,
+        options: Object.assign({
+          formatter: eslintFriendlyFormatter,
+        }, $('script.eslint')),
+        include: [
+          $('cwd', $('path.client')),
+          $('cwd', $('path.server')),
+          $('cwd', $('path.test')),
+        ],
+      }, {
+        loader: 'babel-loader',
+        test: /\.js$/,
+        include: [
+          $('cwd', $('path.client')),
+          $('cwd', $('path.server')),
+          $('cwd', $('path.test')),
+        ],
+      }, {
+        loader: 'json-loader',
+        test: /\.json$/,
+      }],
+    },
+  });
+  ```
+
+</p></details>
+
+<details><summary>templates/style-loaders</summary><p>
+  
+  ## Sample
+  
+  ```javascript
+  const autoprefixer = require('autoprefixer');
+  const ExtractTextPlugin = require('extract-text-webpack-plugin');
+  const { styleLoaders } = require('webpack-cfg/templates');
+
+  module.exports.postcss = $ => [
+    autoprefixer(Object.assign({}, $('style.autoprefixer'), {
+      browsers: $('pkg.browsers'),
+    })),
+  ];
+
+  module.exports.style = ($, fallbackStyle = 'style-loader') => {
+    const options = styleLoaders($, fallbackStyle, module.exports.postcss);
+    if (options.extract) {
+      Object.keys(options.use).map((name) => {
+        const fallback = options.use[name].shift();
+        options.use[name] = ExtractTextPlugin.extract({
+          publicPath: options.publicPath,
+          use: options.use[name],
+          fallback,
+        });
+        return options.use[name];
+      });
+    }
+    return options.use;
+  };
+
+  module.exports.rules = ($, fallback) => {
+    const use = module.exports.style($, fallback);
+    return Object.keys(use).map((ext) => ({
+      test: new RegExp(`\\.${ext}$`),
+      use: use[ext],
+    }));
+  };
+  ```
+
+</p></details>
+
+
 ## License
 
 [MIT][license-url]
