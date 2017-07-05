@@ -44,25 +44,25 @@
     "release": "npm run build && standard-version"
   },
   "dependencies": {
-    "pirate-flag": "^0.0.1",
-    "dotcfg": "1.5.13",
+    "pirate-flag": "^0.1.0",
+    "dotcfg": "1.5.14",
     "flatten": "^1.0.2",
-    "glob": "^7.1.1",
+    "glob": "^7.1.2",
     "is": "^3.2.1"
   },
   "devDependencies": {
-    "ava": "^0.19.0",
+    "ava": "^0.20.0",
     "ava-cli": "^0.0.1",
     "ava-spec": "^1.1.0",
-    "conventional-commit-types": "^2.1.0",
-    "cross-env": "^4.0.0",
-    "husky": "^0.13.3",
-    "npm-check-updates": "^2.10.4",
+    "conventional-commit-types": "^2.2.0",
+    "cross-env": "^5.0.1",
+    "husky": "^0.14.3",
+    "npm-check-updates": "^2.12.1",
     "npm-run-all": "^4.0.2",
-    "nyc": "^10.2.0",
-    "standard-version": "^4.0.0",
-    "validate-commit-msg": "^2.12.0",
-    "xo": "^0.18.1"
+    "nyc": "^11.0.3",
+    "standard-version": "^4.2.0",
+    "validate-commit-msg": "^2.12.2",
+    "xo": "^0.18.2"
   },
   "engines": {
     "node": ">=6.10.1"
