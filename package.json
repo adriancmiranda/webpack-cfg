@@ -7,41 +7,23 @@
   "homepage": "https://github.com/adriancmiranda/webpack-cfg",
   "readmeFilename": "README.md",
   "license": "MIT",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/adriancmiranda/webpack-cfg.git"
-  },
-  "bugs": {
-    "url": "https://github.com/adriancmiranda/webpack-cfg/issues"
-  },
-  "xo": {
-    "overrides": [
-      {
-        "files": "index.js",
-        "esnext": false
-      },
-      {
-        "files": "lib/**/*.js",
-        "esnext": false
-      }
-    ]
-  },
-  "config": {
-    "validate-commit-msg": {
-      "types": "conventional-commit-types"
-    }
-  },
   "scripts": {
+    "prereport:coverage": "nyc report --reporter=text-lcov npm test > test/coverage.lcov",
+    "report:coverage": "codecov -f test/coverage.lcov --token=$CODECOV_TOKEN",
     "upgrade": "ncu -a --loglevel verbose --packageFile package.json && npm i",
     "dev": "run-p watch:*",
-    "test": "ava test/*.spec.js",
+    "test": "ava test/*.spec.js --color",
+    "test:coverage": "nyc npm test -- --no-cache --verbose",
+    "test:travis": "nyc npm test -- --no-cache --verbose",
+    "test:appveyor": "nyc npm test -- --no-cache --verbose",
     "watch:test": "npm test -- --watch",
-    "lint": "xo index.js tools.js templates.js lib/**/*.js",
+    "lint": "eslint --ext .js index.js tools.js templates.js lib",
     "travis:test": "npm test",
     "appveyor:test": "node --max_old_space_size=4096 \"node_modules\\ava-cli\\cli\" \"test/*.spec.js\"",
     "precommit": "run-s lint test",
     "commitmsg": "validate-commit-msg",
-    "release": "npm run build && standard-version"
+    "prerelease": "npm test",
+    "release": "standard-version"
   },
   "dependencies": {
     "pirate-flag": "^0.1.0",
@@ -52,23 +34,38 @@
   },
   "devDependencies": {
     "ava": "^0.20.0",
-    "ava-cli": "^0.0.1",
+    "ava-cli": "0.0.1",
     "ava-spec": "^1.1.0",
     "conventional-commit-types": "^2.2.0",
     "cross-env": "^5.0.1",
+    "eslint": "^3.19.0",
+    "eslint-config-airbnb-base": "^11.2.0",
+    "eslint-plugin-import": "^1.16.0",
     "husky": "^0.14.3",
     "npm-check-updates": "^2.12.1",
     "npm-run-all": "^4.0.2",
     "nyc": "^11.0.3",
     "standard-version": "^4.2.0",
-    "validate-commit-msg": "^2.12.2",
-    "xo": "^0.18.2"
+    "validate-commit-msg": "^2.12.2"
+  },
+  "config": {
+    "validate-commit-msg": {
+      "types": "conventional-commit-types"
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/adriancmiranda/webpack-cfg.git"
+  },
+  "bugs": {
+    "url": "https://github.com/adriancmiranda/webpack-cfg/issues"
   },
   "engines": {
     "node": ">=6.10.1"
   },
   "keywords": [
     "webpack",
-    "webpack-cfg"
+    "webpack-cfg",
+    "pipeline"
   ]
 }

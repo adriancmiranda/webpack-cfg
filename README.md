@@ -11,6 +11,7 @@
 [![depsci][depsci]][depsci-url]
 [![travis][travis]][travis-url]
 [![appveyor][appveyor]][appveyor-url]
+[![codecov][codecov]][codecov-url]
 
 ## Install
 
@@ -190,9 +191,6 @@ module.exports = get => ({
 [npm]: https://badge.fury.io/js/webpack-cfg.svg
 [npm-url]: https://npmjs.com/package/webpack-cfg
 
-[xo]: https://img.shields.io/badge/code_style-XO-5ed9c7.svg
-[xo-url]: https://github.com/sindresorhus/xo
-
 [npm]: https://img.shields.io/npm/v/webpack-cfg.svg
 [npm-url]: https://npmjs.com/package/webpack-cfg
 
@@ -210,5 +208,8 @@ module.exports = get => ({
 
 [stability]: http://badges.github.io/stability-badges/dist/experimental.svg
 [stability-url]: https://cdn.meme.am/cache/instances/folder481/500x/9689481.jpg
+
+[codecov]: https://codecov.io/gh/adriancmiranda/webpack-cfg/branch/master/graph/badge.svg
+[codecov-url]: https://codecov.io/gh/adriancmiranda/webpack-cfg
 
 [license-url]: https://github.com/adriancmiranda/webpack-cfg/blob/master/LICENSE
