@@ -22,7 +22,7 @@ install:
   - npm install yarn -g
   - yarn install
   - yarn link
-  - yarn link describe-type
+  - yarn link webpack-cfg
 
 build: off
 
