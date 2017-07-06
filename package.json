@@ -19,7 +19,6 @@
     "watch:test": "npm test -- --watch",
     "lint": "eslint --ext .js index.js tools.js templates.js lib",
     "travis:test": "npm test",
-    "appveyor:test": "node --max_old_space_size=4096 \"node_modules\\ava-cli\\cli\" \"test/*.spec.js\"",
     "precommit": "run-s lint test",
     "commitmsg": "validate-commit-msg",
     "prerelease": "npm test",
