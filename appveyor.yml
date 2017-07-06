@@ -1,6 +1,3 @@
-# appveyor file
-# http://www.appveyor.com/docs/appveyor-yml
-
 branches:
   only:
     - master
@@ -10,9 +7,10 @@ init:
 
 clone_depth: 50
 
-# what combinations to test
 environment:
   matrix:
+    - nodejs_version: stable
+      job_part: test
     - nodejs_version: 7
       job_part: test
     - nodejs_version: 6
@@ -23,6 +21,8 @@ install:
   - npm install ava-cli -g
   - npm install yarn -g
   - yarn install
+  - yarn link
+  - yarn link describe-type
 
 build: off
 
