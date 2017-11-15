@@ -7,6 +7,11 @@
   "homepage": "https://github.com/adriancmiranda/webpack-cfg",
   "readmeFilename": "README.md",
   "license": "MIT",
+  "files": [
+    "lib",
+    "LICENSE",
+    "README.md"
+  ],
   "scripts": {
     "prereport:coverage": "nyc report --reporter=text-lcov npm test > test/coverage.lcov",
     "report:coverage": "codecov -f test/coverage.lcov --token=$CODECOV_TOKEN",
