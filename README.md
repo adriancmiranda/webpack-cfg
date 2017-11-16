@@ -19,6 +19,10 @@
 npm i -D webpack-cfg
 ```
 
+## Usage
+
+[example](./example)
+
 ## License
 
 [MIT][license-url]

@@ -1,0 +1,5 @@
+User-agent: *
+Disallow:
+Disallow: /bin/
+Disallow: /test/
+Sitemap: https://adrian.directory/sitemap.xml
