@@ -1,7 +1,7 @@
-# webpack-cfg
-> example
+# Example
+> Webpack-Cfg
 
-## tasks
+## Usage
 
 ```bash
 $ npm i && npm start
