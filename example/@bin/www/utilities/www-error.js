@@ -1,5 +1,7 @@
-const debug = require('debug')('www:error');
+const debug = require('debug');
 const { is } = require('describe-type');
+
+const fault = debug('www:error');
 
 module.exports = function wwwError(port, error) {
 	if (!is.error(error)) throw new Error('invalid call to wwwError');
@@ -7,11 +9,11 @@ module.exports = function wwwError(port, error) {
   const bind = is.string(port) ? `Pipe ${port}` : `Port ${port}`;
 	switch (error.code) {
     case 'EACCES':
-      debug(`${bind} requires elevated privileges`);
+      fault(`${bind} requires elevated privileges`);
       process.exit(1);
       break;
     case 'EADDRINUSE':
-      debug(`${bind} is already in use`);
+      fault(`${bind} is already in use`);
       process.exit(1);
       break;
     default: throw error;
