@@ -1,7 +1,7 @@
 const debug = require('debug');
 const { is } = require('describe-type');
 
-const fault = debug('www:error');
+const fault = debug('www:fault');
 
 module.exports = function wwwError(port, error) {
 	if (!is.error(error)) throw new Error('invalid call to wwwError');
