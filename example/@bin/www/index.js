@@ -5,7 +5,7 @@ const debug = require('debug')('eguru:server');
 const pipeline = require('../webpack/pipeline');
 const normalizePort = require('./utilities/normalize-port');
 const wwwError = require('./utilities/www-error');
-const app = require('./app');
+const app = require('../../app');
 
 const { NODE_ENV = 'production', HOST = '0.0.0.0', PORT = 3001 } = pipeline.env;
 app.set('env', NODE_ENV);
