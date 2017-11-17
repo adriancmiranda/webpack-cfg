@@ -73,7 +73,7 @@ module.exports = pipeline.setConfig((all, api, cli) => {
   // ~ dev lifecycle ~
   all.set('dev.env.NODE_ENV', '"development"');
   all.set('dev.host', ip.address());
-  all.set('dev.port', 3000);
+  all.set('dev.port', process.env.PORT || 3000);
   all.set('dev.assetsPublicPath', '');
   all.set('dev.useRelativePath', true);
   all.set('dev.autoOpenBrowser', true);

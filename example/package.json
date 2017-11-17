@@ -15,6 +15,7 @@
     "dev": "cross-env NODE_ENV=development npm start -- --run client-dev,server-dev --debug 1 --log 1 --notify 1",
     "server": "npm run dev",
     "client": "webpack-dev-server --config @bin/webpack --env.run client-dev --env.lifecycle=dev",
+    "client:async": "webpack-dev-server --config @bin/webpack/async --env.run client-dev --env.lifecycle=dev",
     "build:client": "webpack --config @bin/webpack --env.run client-build",
     "build:server": "webpack --config @bin/webpack --env.run server-build",
     "build": "webpack --config @bin/webpack --env.run client-build,server-build",
@@ -92,6 +93,7 @@
     "mongoose": "4.13.1",
     "morgan": "1.9.0",
     "pirate-flag": "0.1.0",
+    "portfinder": "1.0.13",
     "pug": "2.0.0-rc.4",
     "source-map-support": "0.5.0"
   },
