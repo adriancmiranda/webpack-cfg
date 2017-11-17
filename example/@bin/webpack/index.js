@@ -34,8 +34,7 @@ module.exports = pipeline.setConfig((all, api, cli) => {
   all.set('cwd', process.cwd());
   all.set('pwd', alias(__dirname));
   all.set('now', moment().format('LLLL'));
-  all.set('git.commithash', config.git.commithash());
-  all.set('git.version', config.git.version());
+  all.set('git', config.git);
   all.set('lifecycle', process.env.npm_lifecycle_event);
 
   // ~ structure folders ~

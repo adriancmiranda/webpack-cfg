@@ -4,7 +4,7 @@ const moment = require('moment');
 moment.locale();
 
 module.exports = (pack, git, options) => pirateFlag(pack, {
-	commit: git.commithash(),
+	commit: git.commithash,
 	moment: moment().format('LLLL'),
 	homepage: pack.homepage,
 	author: pack.author,
