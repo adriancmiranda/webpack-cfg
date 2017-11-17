@@ -1,6 +1,6 @@
-const { nan } = require('describe-type').is;
+const { is } = require('describe-type');
 
 module.exports = function normalizePort(port) {
   const value = parseInt(port, 10);
-  return nan(value) ? port : (value >= 0 ? value : false);
+  return is.nan(value) ? port : (value >= 0 ? value : false);
 }
