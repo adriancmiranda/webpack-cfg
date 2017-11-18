@@ -7,12 +7,12 @@ OfflinePluginRuntime.install();
 const $el = document.querySelector('[data-ui-view]');
 const urlAPI = `${window.location.origin}/api`;
 const urlAPIGreetings = `${window.location.origin}/api/hooray`;
-const prefix = $el.innerHTML;
+const clientStatusMessage = $el.innerHTML;
 
 $el.innerHTML += ' ...';
 fetch(urlAPI).then(response => response.text()).then((response) => {
   $el.classList.add(styles.done);
-  $el.innerHTML = `${prefix}<br><small>${response}</small>`;
+  $el.innerHTML = `${clientStatusMessage}<br><small>${response}</small>`;
   console.log(`${urlAPI}:`, response);
 }).catch((reason) => {
   $el.classList.add(styles.fail);
