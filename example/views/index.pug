@@ -1,0 +1,30 @@
+doctype html
+html(lang="pt-br")
+  - var plugin = htmlWebpackPlugin ? htmlWebpackPlugin : {};
+  - var options = Object.assign({ scripts: [] }, plugin.options);
+  - var env = options.env || { NODE_ENV: 'production' };
+  - var files = Object.assign({ styles: [], css: [], chunks: [] }, plugin.files);
+
+  head
+    meta(charset="utf-8")
+    meta(http-equiv="X-UA-Compatible", content="IE=edge")
+    if options.mobile
+      meta(name="viewport", content="width=device-width, initial-scale=1")
+    title #{options.title}
+    if options.favicon
+      link(rel="shortcut icon", href=`${options.favicon}`, type="image/x-icon")
+    each file in files.styles
+      link(rel="stylesheet", href=`${file}`)
+    each file in files.css
+      link(rel="stylesheet", href=`${file}`)
+    each file in options.scripts
+      script(href="#{file}")
+
+  body#App(class=`${env.NODE_ENV}`)
+    //- content
+    section#Main(role="main")
+      section#Views(data-ui-view) client: up and running
+
+    //- behaviors
+    each file in files.chunks
+      script(src=`${file.entry}`)

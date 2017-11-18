@@ -38,7 +38,7 @@ module.exports = pipeline.setConfig((all, api, cli) => {
 
   // ~ structure folders ~
   all.set('path.client', config.source.dir);
-  all.set('path.view', all.res('path.client'));
+  all.set('path.view', 'views');
   all.set('path.server', 'routes');
   all.set('path.test', '@test');
   all.set('path.asset', '');
