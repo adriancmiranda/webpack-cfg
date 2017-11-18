@@ -1,4 +1,4 @@
-/* eslint-disable indent */
+/* eslint-disable indent, no-unused-vars */
 const { Router } = require('express');
 
 const router = Router();
@@ -11,8 +11,8 @@ router.get('/:greetings', (request, response) => {
   response.json({ message: `${request.params.greetings}! welcome to your api!` });
 });
 
-router.get('/page', function(req, res, next) {
-  res.render('index', { title: 'webpack-cfg example' });
+router.get('/page', (request, response, next) => {
+  response.render('index', { title: 'webpack-cfg example' });
 });
 
 module.exports = router;

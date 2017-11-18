@@ -1,4 +1,4 @@
-/* eslint-disable indent */
+/* eslint-disable indent, no-unused-vars */
 const { Router } = require('express');
 
 const router = Router();
