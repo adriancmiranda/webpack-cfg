@@ -37,19 +37,6 @@ module.exports = $ => baseTemplate($).cfg({
         $('cwd', $('path.test')),
       ],
     }, {
-      loader: 'babel-loader',
-      test: /\.jsx?$/,
-      options: Object.assign({
-        comments: false,
-        plugins: ['transform-runtime'],
-        presets: [['env', { modules: false }], 'stage-2'],
-      }, $('script.babel')),
-      include: [
-        $('cwd', $('path.client')),
-        $('cwd', $('path.server')),
-        $('cwd', $('path.test')),
-      ],
-    }, {
       loader: 'json-loader',
       test: /\.json$/,
     }],

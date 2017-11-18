@@ -12,9 +12,6 @@ module.exports = $ => commonBase($)
   output: {
     libraryTarget: 'commonjs2',
   },
-  module: {
-    exprContextCritical: false,
-  },
   node: Object.assign({
     crypto: 'empty',
     global: true,
@@ -27,6 +24,23 @@ module.exports = $ => commonBase($)
     setImmediate: true,
     clearImmediate: true,
   }, $('node')),
+  module: {
+    exprContextCritical: false,
+    rules: [{
+      loader: 'babel-loader',
+      test: /\.jsx?$/,
+      options: Object.assign({
+        comments: false,
+        plugins: ['transform-runtime'],
+        presets: [['env', { targets: { node: 'current' } }], 'stage-2'],
+      }, $('script.babel')),
+      exclude: [$('cwd', $('path.client'))],
+      include: [
+        $('cwd', $('path.server')),
+        $('cwd', $('path.test')),
+      ],
+    }]
+  },
   plugins: [
     new webpack.BannerPlugin({
       banner: `try { require('source-map-support').install(); } catch(err) { /* ! */ }`,

@@ -21,6 +21,19 @@ module.exports = $ => commonTemplate($)
 	},
 	module: {
 		rules: [{
+      loader: 'babel-loader',
+      test: /\.jsx?$/,
+      options: Object.assign({
+        comments: false,
+        plugins: ['transform-runtime'],
+        presets: [['env', { modules: false }], 'stage-2'],
+      }, $('script.babel')),
+      exclude: [$('cwd', $('path.server'))],
+      include: [
+        $('cwd', $('path.client')),
+        $('cwd', $('path.test')),
+      ],
+    }, {
 			loader: 'imports-loader?this=>window!exports-loader?window.Modernizr',
 			test: /^(m|M)odernizr$/,
 		}, {
