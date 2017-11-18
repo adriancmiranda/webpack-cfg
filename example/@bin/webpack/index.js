@@ -1,4 +1,3 @@
-const { join, dirname } = require('path');
 const { alias } = require('webpack-cfg/tools');
 const webpackCfg = require('webpack-cfg');
 const moment = require('moment');
@@ -39,6 +38,7 @@ module.exports = pipeline.setConfig((all, api, cli) => {
 
   // ~ structure folders ~
   all.set('path.client', config.source.dir);
+  all.set('path.view', all.res('path.client'));
   all.set('path.server', 'routes');
   all.set('path.test', '@test');
   all.set('path.asset', '');
@@ -49,8 +49,8 @@ module.exports = pipeline.setConfig((all, api, cli) => {
   all.set('path.entry.font', all.res('path.asset', '@components/typography'));
   all.set('path.entry.style', '');
   all.set('path.entry.script', '');
-  all.set('path.entry.view.deps', all.res('path.client'));
-  all.set('path.entry.view.index', all.res('path.client'));
+  all.set('path.entry.view.deps', all.res('path.view'));
+  all.set('path.entry.view.index', all.res('path.view'));
 
   // ~ output ~
   all.set('path.output.bundle', 'bundle');
