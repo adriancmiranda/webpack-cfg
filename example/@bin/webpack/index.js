@@ -13,7 +13,9 @@ const pipeline = webpackCfg({
 
 pipeline.on('config', (settings) => {
   const tasks = Array.isArray(settings) ? settings : [settings];
-  console.log('webpack tasks:', tasks.map((task) => task.name));
+  console.log('webpack tasks:', tasks.map((task) =>
+    `${task.name}:${task.target}`
+  ).join(', '));
 });
 
 module.exports = pipeline.setConfig((all, api, cli) => {
