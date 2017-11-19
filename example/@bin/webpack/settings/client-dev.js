@@ -10,7 +10,7 @@ const skinBase = require('../utilities/skin-base');
 module.exports = $ => clientBase($).cfg('entry', $('react') ? [
 	'react-hot-loader/patch',
 ] : [
-	$('pwd', 'pipeline/action'),
+	'webpack-hot-middleware/client?noInfo=true&reload=true',
 ], prependEntries).cfg({
 	name: '[client:dev]',
 	devtool: '#cheap-module-eval-source-map',
