@@ -7,5 +7,6 @@ module.exports = (pattern, settings, parentFilename) => {
 		parentFilename = settings;
 		settings = undefined;
 	}
-	return new WebpackCfg(path.parse(as(String, parentFilename) || module.parent.filename), pattern, settings);
+	parentFilename = as(String, parentFilename, module.parent.filename);
+	return new WebpackCfg(path.parse(parentFilename), pattern, settings);
 };
