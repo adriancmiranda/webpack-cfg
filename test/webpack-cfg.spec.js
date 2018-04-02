@@ -52,7 +52,7 @@ test('tools/webpackCfg', t => {
 	const component = webpackCfg(stringSingleTask);
 	t.is(toString.call(component.setConfig), '[object Function]', 'setConfig method exists');
 	t.is(toString.call(component.common), '[object Object]', 'common property exists');
-	t.truthy(component.common.cfg && component.common.res, 'common is a dotcfg');
+	t.truthy(component.common.cfg && component.common.resolve, 'common is a dotcfg');
 	const config = component.setConfig({ run: 'server-test' }, () => {});
 	t.falsy(Array.isArray(config), 'Got a single task.');
 	t.is(config.name, 'server:test', 'Got the correct task');
@@ -61,23 +61,23 @@ test('tools/webpackCfg', t => {
 test('tools/webpackCfg config function', t => {
 	const component = webpackCfg(objectTasks);
 	const config = component.setConfig((common, client, server) => {
-		t.truthy(common.cfg && common.res, 'common is a dotcfg');
-		t.truthy(client.cfg && client.res, 'client is a dotcfg');
-		t.truthy(server.cfg && server.res, 'server is a dotcfg');
+		t.truthy(common.cfg && common.resolve, 'common is a dotcfg');
+		t.truthy(client.cfg && client.resolve, 'client is a dotcfg');
+		t.truthy(server.cfg && server.resolve, 'server is a dotcfg');
 	});
 	t.is(toString.call(config), '[object Function]');
-	t.truthy(config.common.cfg && config.common.res, 'common is externally accessible');
-	t.truthy(config.client.cfg && config.client.res, 'client is externally accessible');
-	t.truthy(config.server.cfg && config.server.res, 'server is externally accessible');
+	t.truthy(config.common.cfg && config.common.resolve, 'common is externally accessible');
+	t.truthy(config.client.cfg && config.client.resolve, 'client is externally accessible');
+	t.truthy(config.server.cfg && config.server.resolve, 'server is externally accessible');
 });
 
 test('tools/webpackCfg config', t => {
 	const component = webpackCfg(objectTasks);
 	const argv = { dev: true, run: ['client-build'] };
 	const config = component.setConfig(argv, (common, client, server) => {
-		t.truthy(common.cfg && common.res, 'common is a dotcfg');
-		t.truthy(client.cfg && client.res, 'client is a dotcfg');
-		t.truthy(server.cfg && server.res, 'server is a dotcfg');
+		t.truthy(common.cfg && common.resolve, 'common is a dotcfg');
+		t.truthy(client.cfg && client.resolve, 'client is a dotcfg');
+		t.truthy(server.cfg && server.resolve, 'server is a dotcfg');
 		common.cfg('lifecycle', process.env.npm_lifecycle_event);
 		common.cfg('cwd', process.cwd());
 		t.is(toString.call(common.cfg('cwd')), '[object Function]', 'cwd from strategy works');
@@ -89,7 +89,7 @@ test('tools/webpackCfg config', t => {
 		t.is(toString.call(common.cfg('path.output')), '[object Function]', 'prefix path from strategy works');
 		common.cfg('path.assets', 'assets');
 		t.is(toString.call(common.cfg('path.assets')), '[object Function]', 'prefix path from strategy works');
-		common.cfg('path.scripts', common.res('path.assets', 'core'));
+		common.cfg('path.scripts', common.resolve('path.assets', 'core'));
 		t.is(toString.call(common.cfg('path.scripts')), '[object Function]', 'prefix path from strategy works');
 		common.cfg('build.publicPath', 'dist');
 		t.truthy(common.cfg('build.publicPath'), 'dist');
@@ -123,9 +123,9 @@ test('tools/webpackCfg multi config', t => {
 	const component = webpackCfg(objectTasks);
 	const argv = { dev: true, run: ['client-watch', 'server-watch'] };
 	const config = component.setConfig(argv, (common, client, server) => {
-		t.truthy(common.cfg && common.res, 'common is a dotcfg');
-		t.truthy(client.cfg && client.res, 'client is a dotcfg');
-		t.truthy(server.cfg && server.res, 'server is a dotcfg');
+		t.truthy(common.cfg && common.resolve, 'common is a dotcfg');
+		t.truthy(client.cfg && client.resolve, 'client is a dotcfg');
+		t.truthy(server.cfg && server.resolve, 'server is a dotcfg');
 	});
 	t.truthy(Array.isArray(config), 'Got multi tasks');
 	t.is(config[0].name, 'client:watch', 'Got the correct task on correct order');
