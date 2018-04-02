@@ -34,7 +34,7 @@
   },
   "dependencies": {
     "describe-type": "0.6.4",
-    "dotcfg": "1.7.3",
+    "dotcfg": "1.7.4",
     "flatten": "^1.0.2",
     "glob": "^7.1.2",
     "pirate-flag": "^0.1.0"
