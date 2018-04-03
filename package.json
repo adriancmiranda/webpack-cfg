@@ -2,7 +2,7 @@
   "name": "webpack-cfg",
   "author": "Adrian C. Miranda",
   "description": "A distribution board for webpack",
-  "version": "1.3.7",
+  "version": "1.3.8",
   "main": "index.js",
   "homepage": "https://github.com/adriancmiranda/webpack-cfg",
   "readmeFilename": "README.md",
@@ -33,8 +33,8 @@
     "release": "standard-version"
   },
   "dependencies": {
-    "describe-type": "0.6.4",
-    "dotcfg": "1.7.4",
+    "describe-type": "0.6.5",
+    "dotcfg": "1.7.6",
     "flatten": "^1.0.2",
     "glob": "^7.1.2",
     "pirate-flag": "^0.1.0"
