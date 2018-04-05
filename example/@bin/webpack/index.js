@@ -1,8 +1,10 @@
+const { join, dirname } = require('path');
 const { alias } = require('webpack-cfg/tools');
 const webpackCfg = require('webpack-cfg');
 const moment = require('moment');
 const ip = require('ip');
 const config = require('../@/config');
+const regexEscape = require('../@/regexEscape');
 
 moment.locale();
 
@@ -13,9 +15,7 @@ const pipeline = webpackCfg({
 
 pipeline.on('config', (settings) => {
   const tasks = Array.isArray(settings) ? settings : [settings];
-  console.log('webpack tasks:', tasks.map((task) =>
-    `${task.name}:${task.target}`
-  ).join(', '));
+  console.log('webpack tasks:', tasks.map((task) => task.name));
 });
 
 module.exports = pipeline.setConfig((all, api, cli) => {
@@ -40,19 +40,18 @@ module.exports = pipeline.setConfig((all, api, cli) => {
 
   // ~ structure folders ~
   all.set('path.client', config.source.dir);
-  all.set('path.view', 'views');
   all.set('path.server', 'routes');
   all.set('path.test', '@test');
   all.set('path.asset', '');
 
   // ~ entry ~
   all.set('path.entry.static', 'static');
-  all.set('path.entry.media', all.res('path.asset'));
-  all.set('path.entry.font', all.res('path.asset', '@components/typography'));
+  all.set('path.entry.media', all.resolve('path.asset'));
+  all.set('path.entry.font', all.resolve('path.asset', '@components/typography'));
   all.set('path.entry.style', '');
   all.set('path.entry.script', '');
-  all.set('path.entry.view.deps', all.res('path.view'));
-  all.set('path.entry.view.index', all.res('path.view'));
+  all.set('path.entry.view.deps', all.resolve('path.client'));
+  all.set('path.entry.view.index', all.resolve('path.client'));
 
   // ~ output ~
   all.set('path.output.bundle', 'bundle');
@@ -65,7 +64,7 @@ module.exports = pipeline.setConfig((all, api, cli) => {
   all.set('path.output.view.index', '');
 
   // ~ common aliases ~
-  all.set('alias.view', all.res('path.entry.view.deps'));
+  all.set('alias.view', all.resolve('path.entry.view.deps'));
 
   // ~ common providers ~
   all.set('provide.$', 'jquery');
@@ -97,6 +96,12 @@ module.exports = pipeline.setConfig((all, api, cli) => {
   // ~ eslint ~
   all.set('eslint.emitWarning', true);
 
+  // ~ build optimization: https://gist.github.com/sokra/1522d586b8e5c0f5072d7565c2bee693 ~
+  const reVendor = new RegExp(`[\\/](node_modules|${regexEscape(all.resolve('bowerrc.directory'))})[\\/]`);
+  all.set('build.optimization.splitChunks.cacheGroups.commons.test', reVendor);
+  all.set('build.optimization.splitChunks.cacheGroups.commons.name', 'vendor');
+  all.set('build.optimization.splitChunks.cacheGroups.commons.chunks', 'all');
+
 
   // --------------------------------------------------------------------------
   //
@@ -104,11 +109,11 @@ module.exports = pipeline.setConfig((all, api, cli) => {
   //
   // --------------------------------------------------------------------------
 
-  all.set('dev.server.contentBase', all.res('path.client'));
-  all.set('dev.server.publicPath', all.res('dev.assetsPublicPath'));
-  all.set('dev.server.proxy', all.res('dev.proxy'));
-  all.set('dev.server.host', all.res('dev.host'));
-  all.set('dev.server.port', all.res('dev.port'));
+  all.set('dev.server.contentBase', all.resolve('path.client'));
+  all.set('dev.server.publicPath', all.resolve('dev.assetsPublicPath'));
+  all.set('dev.server.proxy', all.resolve('dev.proxy'));
+  all.set('dev.server.host', all.resolve('dev.host'));
+  all.set('dev.server.port', all.resolve('dev.port'));
   all.set('dev.server.historyApiFallback', true);
   all.set('dev.server.hot', true);
   all.set('dev.server.quiet', false);
@@ -133,7 +138,7 @@ module.exports = pipeline.setConfig((all, api, cli) => {
   // N/A yet.
 
   // ~ server aliases settings ~
-  api.set('alias.~', all.res('path.server'));
+  api.set('alias.~', all.resolve('path.server'));
 
   // ~ server script settings ~
   api.set('script.entry.server', './index.js');
@@ -146,10 +151,10 @@ module.exports = pipeline.setConfig((all, api, cli) => {
   // --------------------------------------------------------------------------
 
   // ~ client aliases settings ~
-  cli.set('alias.~', all.res('path.client'));
-  cli.set('alias.data', all.res('path.client', 'data'));
-  cli.set('alias.asset', all.res('path.client', all.res('path.asset')));
-  cli.set('alias.@vendors', all.res('bowerrc.directory'));
+  cli.set('alias.~', all.resolve('path.client'));
+  cli.set('alias.data', all.resolve('path.client', 'data'));
+  cli.set('alias.asset', all.resolve('path.client', all.resolve('path.asset')));
+  cli.set('alias.@vendors', all.resolve('bowerrc.directory'));
 
   // ~ client providers settings ~
   cli.set('provide.Proto', 'Proto');
@@ -175,7 +180,7 @@ module.exports = pipeline.setConfig((all, api, cli) => {
   cli.set('view.data.inject', false);
 
   // ~ client cache settings ~
-  cli.set('offline.support', true);
+  cli.set('offline.support', false);
   cli.set('offline.data.caches.main', ['index.html']);
   cli.set('offline.data.caches.additional', ['*.woff2']);
   cli.set('offline.data.caches.optional', [':rest:']);

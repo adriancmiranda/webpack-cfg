@@ -21,19 +21,6 @@ module.exports = $ => commonTemplate($)
 	},
 	module: {
 		rules: [{
-      loader: 'babel-loader',
-      test: /\.jsx?$/,
-      options: Object.assign({
-        comments: false,
-        plugins: ['transform-runtime'],
-        presets: [['env', { modules: false }], 'stage-2'],
-      }, $('script.babel')),
-      exclude: [$('cwd', $('path.server'))],
-      include: [
-        $('cwd', $('path.client')),
-        $('cwd', $('path.test')),
-      ],
-    }, {
 			loader: 'imports-loader?this=>window!exports-loader?window.Modernizr',
 			test: /^(m|M)odernizr$/,
 		}, {
@@ -181,7 +168,7 @@ module.exports = $ => commonTemplate($)
 	plugins: [
 		new webpack.ProvidePlugin(Object.assign({}, $('provide'))),
 		new ExtractTextPlugin({
-			filename: $('path.output.style', '[name].[contenthash].css'),
+			filename: $('path.output.style', '[name].[md5:contenthash:hex:20].css'),
 			disable: !!$('argv.dev'),
 			allChunks: true,
 		}),

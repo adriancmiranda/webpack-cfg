@@ -3,10 +3,10 @@ let config;
 
 if (DEV) {
 	config = require('..');
-	const { NODE_ENV = JSON.parse(config.common.res('dev.env.NODE_ENV')) } = process.env;
-	const { NODE_PATH = config.common.res('path.output.bundle') } = process.env;
-	const { PORT = config.common.res('dev.port') } = process.env;
-	const { HOST = config.common.res('dev.host') } = process.env;
+	const { NODE_ENV = JSON.parse(config.common.resolve('dev.env.NODE_ENV')) } = process.env;
+	const { NODE_PATH = config.common.resolve('path.output.bundle') } = process.env;
+	const { PORT = config.common.resolve('dev.port') } = process.env;
+	const { HOST = config.common.resolve('dev.host') } = process.env;
 	exports.env = { NODE_PATH, NODE_ENV, HOST, PORT };
 } else {
 	const { NODE_PATH, NODE_ENV, HOST = '0.0.0.0', PORT = 3000 } = process.env;
@@ -18,9 +18,9 @@ exports.serve = (argv) => {
 	const webpack = require('webpack');
 	const error = require('debug')('pipeline:error');
 	const middleware = require('./middleware');
-	const outputStatic = config.common.res('path.output.static');
-	const proxy = config.common.res('dev.proxy');
-	const autoOpenBrowser = config.common.res('dev.autoOpenBrowser');
+	const outputStatic = config.common.resolve('path.output.static');
+	const proxy = config.common.resolve('dev.proxy');
+	const autoOpenBrowser = config.common.resolve('dev.autoOpenBrowser');
 	const testing = /^testing$/i.test(exports.env.NODE_ENV);
 	const webpackConfig = config({ dev: !testing, run: argv.run, lifecycle: 'dev' });
 	const multiCompiler = webpack(webpackConfig);

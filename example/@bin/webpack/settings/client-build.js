@@ -12,8 +12,10 @@ const skinBase = require('../utilities/skin-base');
 
 module.exports = $ => clientBase($).cfg({
 	name: '[client:build]',
+	mode: 'production',
 	bail: true,
 	devtool: $('build.sourceMap') ? '#source-map' : false,
+	optimization: $('build.optimization'),
 	output: {
 		publicPath: $('build.assetsPublicPath'),
 		filename: $('path.output.script', '[name].[chunkhash].js'),
@@ -62,17 +64,6 @@ module.exports = $ => clientBase($).cfg({
 				[key]: JSON.parse($(`build.env.${key}`))
 			}))),
 		})),
-		new webpack.optimize.CommonsChunkPlugin({
-			name: 'vendor',
-			minChunks: module => (module.resource && /\.js$/.test(module.resource) && (
-				module.resource.indexOf($('cwd', 'node_modules')) === 0 ||
-				module.resource.indexOf($('cwd', $('bowerrc.directory'))) === 0
-			)),
-		}),
-		new webpack.optimize.CommonsChunkPlugin({
-			name: 'manifest',
-			chunks: ['vendor'],
-		}),
 		new webpack.BannerPlugin({
 			banner: pirateFlag($('package'), {
 				moment: $('now'),

@@ -30,23 +30,14 @@ module.exports = (compiler, options) => {
 		}
 	}
 
-	compiler.watch({}, (error, stats) => {
-		if (stats.hasErrors()) return;
+	compiler.watch({}, (err, stats) => {
+		if (err) return log(err);
+		if (stats.hasErrors()) return log(stats.toJson({}, true));
 		if (!server || !sharedContext.hotCheck) {
 			loadServer(stats);
 			while (requestQueue.length) {
 				server(...requestQueue.shift());
 			}
-		} else {
-			sharedContext.hotCheck(stats).catch(() => loadServer(stats));
-		}
-	});
-
-	compiler.watch({}, (err, stats) => {
-		if (stats.hasErrors()) return;
-		if (!server || !sharedContext.hotCheck) {
-			loadServer(stats);
-			while (requestQueue.length) server(...requestQueue.shift());
 		} else {
 			sharedContext.hotCheck(stats).catch(() => loadServer(stats));
 		}

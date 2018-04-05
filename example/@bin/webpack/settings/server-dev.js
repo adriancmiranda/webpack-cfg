@@ -1,12 +1,10 @@
 const webpack = require('webpack');
 const nodeExternals = require('webpack-node-externals');
-const { prependEntries } = require('webpack-cfg/tools');
 const serverBase = require('../templates/server-base');
 
-module.exports = $ => serverBase($).cfg('entry', [
-  'webpack/hot/signal.js',
-], prependEntries).cfg({
+module.exports = $ => serverBase($).cfg({
 	name: '[server:dev]',
+	mode: 'development',
 	devtool: '#cheap-module-eval-source-map',
 	output: {
 		publicPath: $('dev.host'),

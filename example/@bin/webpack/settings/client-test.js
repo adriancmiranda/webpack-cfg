@@ -4,6 +4,7 @@ const skinBase = require('../utilities/skin-base');
 
 module.exports = $ => clientBase($).cfg({
 	name: '[client:test]',
+	mode: undefined,
 	entry: undefined,
 	devtool: '#inline-source-map',
 	module: {

@@ -1,0 +1,28 @@
+:global {
+  #App {
+    font-family: sans-serif;
+    line-height: 2em;
+    background-color: #000;
+    color: #555;
+
+    &.development {
+      background-color: #ffcc00;
+      color: #000;
+    }
+
+    &.production {
+      background-color: #ffcc00;
+      color: #8a7813;
+    }
+
+    .done {
+      background-color: green;
+      color: #fff;
+    }
+
+    .fail {
+      background-color: red;
+      color: #fff;
+    }
+  }
+}

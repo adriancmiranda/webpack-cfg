@@ -4,6 +4,7 @@ const serverBase = require('../templates/server-base');
 
 module.exports = $ => serverBase($).cfg({
 	name: '[server:test]',
+	mode: undefined,
 	devtool: '#inline-source-map',
 	externals: [nodeExternals({ whitelist: [/\.(?!(?:jsx?|json)$).{1,5}$/i] })],
 	entry: undefined,
