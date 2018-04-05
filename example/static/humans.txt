@@ -1,14 +1,14 @@
 /* TEAM */
 Your title: Adrian C. Miranda.
-Site: hire@adrian.directory
+Site: xxx@xxx.xxx
 Twitter: @adriancmiranda.
 Location: São Paulo, Brasil.
 
 /* THANKS */
-Name: A, C, E
+Name: A, M, A
 
 /* SITE */
-Last update: YYYY/MM/DD
+Last update: 2017/11/19
 Standards: HTML5, CSS3, ES6
-Components: Modernizr, React, ExpressJS.
+Components: express
 Software: Sublime Text 3

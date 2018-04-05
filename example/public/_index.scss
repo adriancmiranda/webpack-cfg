@@ -1,3 +1,8 @@
+::selection {
+  color: #fff; 
+  background: #000;
+}
+
 :global {
   #App {
     font-family: sans-serif;
@@ -15,14 +20,24 @@
       color: #8a7813;
     }
 
-    .done {
+    .is-done {
       background-color: green;
+      border-radius: 5px;
+      padding: 0 10px;
       color: #fff;
     }
 
-    .fail {
+    .is-fail {
       background-color: red;
+      border-radius: 5px;
+      padding: 0 10px;
       color: #fff;
     }
   }
+}
+
+.data {
+  padding: 5px 10px;
+  background-color: #fff;
+  color: #000;
 }

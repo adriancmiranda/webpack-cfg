@@ -12,21 +12,21 @@ function fetchAll() {
 
   $el.innerHTML += ' ...';
   fetch(urlAPI).then(response => response.text()).then((response) => {
-    $el.classList.add(styles.done);
-    $el.innerHTML = `${clientStatusMessage}<br><small>${response}...</small>`;
+    $el.classList.add('is-done');
+    $el.innerHTML = `${clientStatusMessage}<br>${response}...`;
     console.log(`${urlAPI}:`, response);
   }).catch((reason) => {
-    $el.classList.add(styles.fail);
+    $el.classList.add('is-fail');
     $el.innerHTML += `<br><small>${reason}1</small>`;
     console.error(`${urlAPI}:`, reason);
   });
 
   fetch(urlAPIGreetings).then(response => response.json()).then((response) => {
-    $el.classList.add(styles.done);
-    $el.innerHTML += `<br><small>${response.message}</small>`;
+    $el.classList.add('is-done');
+    $el.innerHTML += `<br><small class="${styles.data}">${response.message}</small>`;
     console.log(`${urlAPIGreetings}:`, response);
   }).catch((reason) => {
-    $el.classList.add(styles.fail);
+    $el.classList.add('is-fail');
     $el.innerHTML += `<br><small>${reason}</small>`;
     console.error(`${urlAPIGreetings}:`, reason);
   });

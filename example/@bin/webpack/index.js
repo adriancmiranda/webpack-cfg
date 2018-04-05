@@ -41,6 +41,7 @@ module.exports = pipeline.setConfig((all, api, cli) => {
   // ~ structure folders ~
   all.set('path.client', config.source.dir);
   all.set('path.server', 'routes');
+  all.set('path.views', 'views');
   all.set('path.test', '@test');
   all.set('path.asset', '');
 
@@ -50,8 +51,8 @@ module.exports = pipeline.setConfig((all, api, cli) => {
   all.set('path.entry.font', all.resolve('path.asset', '@components/typography'));
   all.set('path.entry.style', '');
   all.set('path.entry.script', '');
-  all.set('path.entry.view.deps', all.resolve('path.client'));
-  all.set('path.entry.view.index', all.resolve('path.client'));
+  all.set('path.entry.view.deps', all.resolve('path.views'));
+  all.set('path.entry.view.index', all.resolve('path.views'));
 
   // ~ output ~
   all.set('path.output.bundle', 'bundle');
