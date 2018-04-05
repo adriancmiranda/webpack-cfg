@@ -8,5 +8,5 @@ module.exports = (pack, git, options) => pirateFlag(pack, {
 	moment: moment().format('LLLL'),
 	homepage: pack.homepage,
 	author: pack.author,
-	license: `(c) 2016-${+moment().format('GGGG') + 3} ${pack.author}\n`,
+	license: `(c) ${+moment().format('GGGG')}-${+moment().format('GGGG') + 3}\n`,
 }, Object.assign({ comment: true, image: [''] }, options));

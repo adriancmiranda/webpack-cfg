@@ -17,7 +17,7 @@ function fetchAll() {
     console.log(`${urlAPI}:`, response);
   }).catch((reason) => {
     $el.classList.add('is-fail');
-    $el.innerHTML += `<br><small>${reason}1</small>`;
+    $el.innerHTML += `<br><small>${reason}</small>`;
     console.error(`${urlAPI}:`, reason);
   });
 
