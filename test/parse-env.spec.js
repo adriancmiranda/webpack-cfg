@@ -18,4 +18,8 @@ test('tools/parseEnv params', t => {
 		env: ['production', 'test'],
 		run: ['server-watch', 'client-watch'],
 	});
+	t.deepEqual(parseEnv.params({ env: 'production,test', run: 'server-watch,client-watch' }, {}, true), {
+		env: '"production,test"',
+		run: '"server-watch,client-watch"',
+	});
 });
