@@ -35,9 +35,8 @@
   "dependencies": {
     "describe-type": "0.6.5",
     "dotcfg": "1.7.6",
-    "flatten": "^1.0.2",
-    "glob": "^7.1.2",
-    "pirate-flag": "^0.1.0"
+    "glob": "7.1.2",
+    "pirate-flag": "0.1.0"
   },
   "devDependencies": {
     "ava": "^0.25.0",
