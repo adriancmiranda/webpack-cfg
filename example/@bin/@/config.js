@@ -2,9 +2,7 @@ const Git = require('git-revision-webpack-plugin');
 const { readJsonSync } = require('fs-extra');
 const { resolve, parse } = require('path');
 const { as } = require('describe-type');
-const { aliases } = require('./aliases');
-const { params } = require('./env');
-const { args } = require('./argv');
+const { parseArgv, parseEnv, fsystem } = require('webpack-cfg/tools');
 const banner = require('./banner');
 
 exports.pack = readJsonSync('package.json', { throws: false });
@@ -13,11 +11,11 @@ exports.source = parse(as(String, exports.pack.module, 'source/index.js'));
 
 exports.source.origin = resolve(exports.source.dir);
 
-exports.aliases = aliases(exports.source.origin);
+exports.aliases = fsystem.aliases(exports.source.origin);
 
-exports.env = params(process.env);
+exports.env = parseEnv.params(process.env);
 
-exports.argv = args(process.argv);
+exports.argv = parseArgv(process.argv);
 
 exports.git = new Git({ lightweightTags: true, branch: true });
 
