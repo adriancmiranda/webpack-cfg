@@ -5,6 +5,7 @@ test('tools/parseEnv params', t => {
 	t.deepEqual(parseEnv.params(1), {});
 	t.deepEqual(parseEnv.params(null), {});
 	t.deepEqual(parseEnv.params(undefined), {});
+	t.deepEqual(parseEnv.params(), {});
 	t.deepEqual(parseEnv.params('foo'), {});
 	t.deepEqual(parseEnv.params({ env: 'development', run: 'client-watch,server-watch' }), {
 		env: 'development',
@@ -18,7 +19,7 @@ test('tools/parseEnv params', t => {
 		env: ['production', 'test'],
 		run: ['server-watch', 'client-watch'],
 	});
-	t.deepEqual(parseEnv.params({ env: 'production,test', run: 'server-watch,client-watch' }, {}, true), {
+	t.deepEqual(parseEnv.stringify({ env: 'production,test', run: 'server-watch,client-watch' }), {
 		env: '"production,test"',
 		run: '"server-watch,client-watch"',
 	});

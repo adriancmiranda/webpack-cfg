@@ -3,9 +3,11 @@ import { parseArgv } from '../tools';
 
 test('tools/parseArgv params', t => {
 	t.is(toString.call(parseArgv), '[object Function]');
+	t.log(parseArgv(1));
 	t.deepEqual(parseArgv(1), {});
 	t.deepEqual(parseArgv(null), {});
 	t.deepEqual(parseArgv(undefined), {});
+	t.deepEqual(parseArgv(), {});
 	t.deepEqual(parseArgv('foo'), {});
 	t.deepEqual(parseArgv([
 		'/usr/local/bin/node',
