@@ -2,7 +2,7 @@
   "name": "webpack-cfg",
   "author": "Adrian C. Miranda",
   "description": "A distribution board for webpack",
-  "version": "1.4.0",
+  "version": "1.4.2",
   "main": "index.js",
   "homepage": "https://github.com/adriancmiranda/webpack-cfg",
   "readmeFilename": "README.md",
@@ -12,6 +12,7 @@
     "index.js",
     "templates.js",
     "tools.js",
+    "errors.js",
     "LICENSE",
     "README.md"
   ],
