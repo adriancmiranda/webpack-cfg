@@ -1,7 +1,7 @@
 import test from 'ava-spec';
 import { sep } from 'path';
-import { absAlias } from '../tools';
 import { WebpackCfgError } from '../errors';
+import { absAlias } from '../tools';
 
 test('tools/absAlias', t => {
 	const src = absAlias(process.cwd());
@@ -10,10 +10,10 @@ test('tools/absAlias', t => {
 	t.is(src('index.js'), `${process.cwd()}${sep}index.js`);
 	t.is(src('core', 'index.js'), `${process.cwd()}${sep}core${sep}index.js`);
 	t.is(src('core', 'facade', 'index.js'), `${process.cwd()}${sep}core${sep}facade${sep}index.js`);
-	// const err = t.throws(() => {
-	// 	src(1);
-	// }, WebpackCfgError);
-	// console.log(err);
-	// t.is(err.code, 'The "path" argument must be of type string');
-	// t.is(err.message, 'The "path" argument must be of type string');
+	const err = t.throws(() => {
+		src(1);
+	}, WebpackCfgError);
+	t.is(err.code, 500);
+	t.is(toString.call(err.message), '[object String]');
+	t.true(err.message.startsWith('The "path" argument must be of type string'));
 });
