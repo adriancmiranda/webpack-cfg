@@ -12,6 +12,7 @@
 [![travis][travis]][travis-url]
 [![appveyor][appveyor]][appveyor-url]
 [![codecov][codecov]][codecov-url]
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fadriancmiranda%2Fwebpack-cfg.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Fadriancmiranda%2Fwebpack-cfg?ref=badge_shield)
 
 ## Install
 
@@ -55,3 +56,6 @@ npm i -D webpack-cfg
 [codecov-url]: https://codecov.io/gh/adriancmiranda/webpack-cfg
 
 [license-url]: https://github.com/adriancmiranda/webpack-cfg/blob/master/LICENSE
+
+
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fadriancmiranda%2Fwebpack-cfg.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Fadriancmiranda%2Fwebpack-cfg?ref=badge_large)
